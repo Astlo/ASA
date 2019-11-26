@@ -18,8 +18,6 @@
         eType="#//Configuration" eOpposite="#//Configuration/composant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="system_fils" upperBound="-1"
         eType="#//Configuration" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" lowerBound="1"
-        upperBound="2" eType="#//Interface" containment="true" eOpposite="#//Interface/composant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contrainte" eType="#//Contrainte"
         eOpposite="#//Contrainte/composant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propriete" eType="#//Propriete"
@@ -42,8 +40,7 @@
         eType="#//Port"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Interface" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="composant" eType="#//Composant"
-        eOpposite="#//Composant/interface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="composant" eType="#//Composant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
         eOpposite="#//Configuration/interface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connecteur" eType="#//Connecteur"
@@ -74,5 +71,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//Configuration"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
