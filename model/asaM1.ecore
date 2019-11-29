@@ -7,90 +7,143 @@
         eType="#//Server"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="serveur" lowerBound="1"
         eType="#//Client"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attacheserveurrpc" eType="#//AttacheServeurRPC"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attacheclientrpc" eType="#//AttacheClientRPC"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="server_detail" eType="#//Server_Detail"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attacheserveurrpc" lowerBound="1"
+        eType="#//AttacheServeurRPC"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attacheclientrpc" lowerBound="1"
+        eType="#//AttacheClientRPC"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="server_detail" lowerBound="1"
+        eType="#//Server_Detail"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bindingServeur" lowerBound="1"
+        eType="#//BindingServeur"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Client" eSuperTypes="aSA.ecore#//Composant">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="send_request" eType="#//Send_Request"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="send_request" lowerBound="1"
+        eType="#//Send_Request"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portbinding" lowerBound="1"
+        eType="#//portBinding"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Server" eSuperTypes="aSA.ecore#//Composant">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="receive_request" eType="#//Receive_Request"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receive_request" lowerBound="1"
+        eType="#//Receive_Request"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RPC" eSuperTypes="aSA.ecore#//Connecteur">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="caller" eType="#//Caller"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="called" eType="#//Called"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="caller" lowerBound="1"
+        eType="#//Caller"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="called" lowerBound="1"
+        eType="#//Called"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Caller" eSuperTypes="aSA.ecore#//RoleRequis"/>
   <eClassifiers xsi:type="ecore:EClass" name="Called" eSuperTypes="aSA.ecore#//RoleFourni"/>
   <eClassifiers xsi:type="ecore:EClass" name="Send_Request" eSuperTypes="aSA.ecore#//PortFourni"/>
   <eClassifiers xsi:type="ecore:EClass" name="Receive_Request" eSuperTypes="aSA.ecore#//PortRequis"/>
   <eClassifiers xsi:type="ecore:EClass" name="AttacheServeurRPC" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="receive_request" eType="#//Receive_Request"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="called" eType="#//Called"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receive_request" lowerBound="1"
+        eType="#//Receive_Request"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="called" lowerBound="1"
+        eType="#//Called"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttacheClientRPC" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="send_request" eType="#//Send_Request"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="caller" eType="#//Caller"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="send_request" lowerBound="1"
+        eType="#//Send_Request"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="caller" lowerBound="1"
+        eType="#//Caller"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Database" eSuperTypes="aSA.ecore#//Composant">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="security_management" eType="#//Security_Management"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query_interrogation" eType="#//Query_Interrogation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="security_management" lowerBound="1"
+        eType="#//Security_Management"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query_interrogation" lowerBound="1"
+        eType="#//Query_Interrogation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Connection" eSuperTypes="aSA.ecore#//Composant">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="db_query" eType="#//DB_Query"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="security_check" eType="#//Security_Check"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="external_socket" eType="#//External_Socket"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="db_query" lowerBound="1"
+        eType="#//DB_Query"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="security_check" lowerBound="1"
+        eType="#//Security_Check"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="external_socket" lowerBound="1"
+        eType="#//External_Socket"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Security" eSuperTypes="aSA.ecore#//Composant">
     <eStructuralFeatures xsi:type="ecore:EReference" name="security_authentification"
-        eType="#//Security_Authentification"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="check_query" eType="#//Check_Query"/>
+        lowerBound="1" eType="#//Security_Authentification"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="check_query" lowerBound="1"
+        eType="#//Check_Query"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NewEClass14"/>
   <eClassifiers xsi:type="ecore:EClass" name="Server_Detail" eSuperTypes="aSA.ecore#//Configuration">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="security" eType="#//Security"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="connection" eType="#//Connection"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="database" eType="#//Database"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rpc2" eType="#//RPC2"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rpc3" eType="#//RPC3"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rpc1" eType="#//RPC1"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc3cm" eType="#//AttachementRPC3CM"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc3sm" eType="#//AttachementRPC3SM"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc2sm" eType="#//AttachementRPC2SM"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc2db" eType="#//AttachementRPC2DB"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc1cm" eType="#//AttachementRPC1CM"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc1db" eType="#//AttachementRPC1DB"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="security" lowerBound="1"
+        eType="#//Security"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connection" lowerBound="1"
+        eType="#//Connection"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="database" lowerBound="1"
+        eType="#//Database"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rpc2" lowerBound="1" eType="#//RPC2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rpc3" lowerBound="1" eType="#//RPC3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rpc1" lowerBound="1" eType="#//RPC1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc3cm" lowerBound="1"
+        eType="#//AttachementRPC3CM"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc3sm" lowerBound="1"
+        eType="#//AttachementRPC3SM"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc2sm" lowerBound="1"
+        eType="#//AttachementRPC2SM"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc2db" lowerBound="1"
+        eType="#//AttachementRPC2DB"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc1cm" lowerBound="1"
+        eType="#//AttachementRPC1CM"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachementrpc1db" lowerBound="1"
+        eType="#//AttachementRPC1DB"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RPC1" eSuperTypes="aSA.ecore#//Connecteur">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc1" eType="#//calledRPC1"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc1" eType="#//callerRPC1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc1" lowerBound="1"
+        eType="#//calledRPC1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc1" lowerBound="1"
+        eType="#//callerRPC1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RPC2" eSuperTypes="aSA.ecore#//Connecteur">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc2" eType="#//CallerRPC2"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc2" eType="#//CalledRPC2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc2" lowerBound="1"
+        eType="#//CallerRPC2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc2" lowerBound="1"
+        eType="#//CalledRPC2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RPC3" eSuperTypes="aSA.ecore#//Connecteur">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc3" eType="#//CalledRPC3"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc3" eType="#//CallerRPC3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc3" lowerBound="1"
+        eType="#//CalledRPC3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc3" lowerBound="1"
+        eType="#//CallerRPC3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttachementRPC1DB" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc1" eType="#//callerRPC1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc1" lowerBound="1"
+        eType="#//callerRPC1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query_interrogation" lowerBound="1"
+        eType="#//Query_Interrogation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttachementRPC1CM" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc1" eType="#//calledRPC1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc1" lowerBound="1"
+        eType="#//calledRPC1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="db_query" lowerBound="1"
+        eType="#//DB_Query"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttachementRPC2DB" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc2" eType="#//CalledRPC2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc2" lowerBound="1"
+        eType="#//CalledRPC2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="security_management" lowerBound="1"
+        eType="#//Security_Management"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttachementRPC2SM" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc2" eType="#//CallerRPC2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc2" lowerBound="1"
+        eType="#//CallerRPC2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="check_query" lowerBound="1"
+        eType="#//Check_Query"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttachementRPC3CM" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc3" eType="#//CallerRPC3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callerrpc3" lowerBound="1"
+        eType="#//CallerRPC3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="security_check" lowerBound="1"
+        eType="#//Security_Check"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttachementRPC3SM" eSuperTypes="aSA.ecore#//Attachement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc3" eType="#//CalledRPC3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calledrpc3" lowerBound="1"
+        eType="#//CalledRPC3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="security_authentification"
+        lowerBound="1" eType="#//Security_Authentification"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="External_Socket" eSuperTypes="aSA.ecore#//Port"/>
   <eClassifiers xsi:type="ecore:EClass" name="DB_Query" eSuperTypes="aSA.ecore#//PortFourni"/>
@@ -105,4 +158,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="CalledRPC2" eSuperTypes="aSA.ecore#//Role"/>
   <eClassifiers xsi:type="ecore:EClass" name="CallerRPC3" eSuperTypes="aSA.ecore#//Role"/>
   <eClassifiers xsi:type="ecore:EClass" name="CalledRPC3" eSuperTypes="aSA.ecore#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BindingServeur" eSuperTypes="aSA.ecore#//Binding">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postBinding" lowerBound="1"
+        eType="#//portBinding"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="external_socket" lowerBound="1"
+        eType="#//External_Socket"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="portBinding"/>
 </ecore:EPackage>
