@@ -12,19 +12,24 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/composant"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/connecteur"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/attachements"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/interface"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/binding"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/interface"/>
     </genClasses>
     <genClasses ecoreClass="aSA.ecore#//Composant">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/system_pere"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/system_fils"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/contrainte"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/propriete"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/contraintes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/proprietes"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/servicerequis"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/portfourni"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/portrequis"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Composant/servicefourni"/>
     </genClasses>
     <genClasses ecoreClass="aSA.ecore#//Connecteur">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Connecteur/system"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Connecteur/interface"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Connecteur/glue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Connecteur/rolefourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Connecteur/rolerequis"/>
     </genClasses>
     <genClasses ecoreClass="aSA.ecore#//Attachement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Attachement/system"/>
@@ -32,20 +37,29 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Attachement/ports"/>
     </genClasses>
     <genClasses ecoreClass="aSA.ecore#//Interface">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Interface/composant"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Interface/configuration"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Interface/connecteur"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aSA.ecore#//Interface/name"/>
     </genClasses>
     <genClasses ecoreClass="aSA.ecore#//Port"/>
     <genClasses ecoreClass="aSA.ecore#//Service"/>
-    <genClasses ecoreClass="aSA.ecore#//PortFourni"/>
-    <genClasses ecoreClass="aSA.ecore#//ServiceRequis"/>
-    <genClasses ecoreClass="aSA.ecore#//ServiceFourni"/>
-    <genClasses ecoreClass="aSA.ecore#//PortRequis"/>
+    <genClasses ecoreClass="aSA.ecore#//PortFourni">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//PortFourni/composant"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//ServiceRequis">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference aSA.ecore#//ServiceRequis/composant"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//ServiceFourni">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//ServiceFourni/composant"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//PortRequis">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//PortRequis/composant"/>
+    </genClasses>
     <genClasses ecoreClass="aSA.ecore#//Role"/>
-    <genClasses ecoreClass="aSA.ecore#//RoleRequis"/>
-    <genClasses ecoreClass="aSA.ecore#//RoleFourni"/>
+    <genClasses ecoreClass="aSA.ecore#//RoleRequis">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//RoleRequis/connecteur"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//RoleFourni">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//RoleFourni/connecteur"/>
+    </genClasses>
     <genClasses ecoreClass="aSA.ecore#//Glue"/>
     <genClasses ecoreClass="aSA.ecore#//Contrainte">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Contrainte/composant"/>

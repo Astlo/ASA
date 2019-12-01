@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ASA/src" modelPluginID="ASA" modelName="AsaM1"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="aSA.genmodel#//aSA"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>asaM1.ecore</foreignModel>
+  <genPackages prefix="AsaM1" disposableProviderFactory="true" ecorePackage="asaM1.ecore#/">
+    <genClasses ecoreClass="asaM1.ecore#//System">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//System/rpc"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//System/client"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//System/serveur"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//System/attacheserveurrpc"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//System/attacheclientrpc"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Client">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Client/client_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Client/client_port_requis"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Server">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server/serveur_port_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server/serveur_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server/server_detail"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//RPC">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC/rrpc_ole_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC/rpc_role_fourni"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//RPC_Role_Requis"/>
+    <genClasses ecoreClass="asaM1.ecore#//RPC_Role_Fourni"/>
+    <genClasses ecoreClass="asaM1.ecore#//Client_Port_Fourni"/>
+    <genClasses ecoreClass="asaM1.ecore#//Serveur_Port_Requis"/>
+    <genClasses ecoreClass="asaM1.ecore#//AttacheServeurRPC">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheServeurRPC/role_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheServeurRPC/role_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheServeurRPC/serveur_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheServeurRPC/serveur_port_requis"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//AttacheClientRPC">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheClientRPC/client_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheClientRPC/role_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheClientRPC/role_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttacheClientRPC/client_port_requis"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Database">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Database/database_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Database/database_port_requis"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Connection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Connection/connection_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Connection/connection_port_requis"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Security">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Security/security_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Security/security_port_requis"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Server_Detail">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/security"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/connection"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/database"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/rpc2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/rpc3"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/rpc1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/attachementrpc3cm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/attachementrpc3sm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/attachementrpc2sm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/attachementrpc2db"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/attachementrpc1cm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/attachementrpc1db"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Server_Detail/bindingserveur"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//RPC1">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC1/role_requis_rpc1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC1/role_fourni_rpc1"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//RPC2">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC2/role_fourni_rpc2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC2/role_requis_rpc2"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//RPC3">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC3/role_requis_rpc3"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//RPC3/role_fourni_rpc3"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//AttachementRPC1DB">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1DB/role_fourni_rpc1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1DB/role_requis_rpc1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1DB/database_port_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1DB/database_portfourni"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//AttachementRPC1CM">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1CM/role_requis_rpc1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1CM/connection_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1CM/connection_port_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC1CM/role_fourni_rpc1"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//AttachementRPC2DB">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2DB/role_requis_rpc2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2DB/role_fourni_rpc2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2DB/database_port_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2DB/database_port_requis"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//AttachementRPC2SM">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2SM/role_fourni_rpc2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2SM/security_portfourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2SM/security_port_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC2SM/role_requis_rpc2"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//AttachementRPC3CM">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC3CM/role_fourni_rpc3"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC3CM/connection_portrequis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC3CM/connection_portfourni"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//AttachementRPC3SM">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC3SM/role_requis_rpc3"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC3SM/security_port_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//AttachementRPC3SM/security_port_fourni"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Connection_PortFourni"/>
+    <genClasses ecoreClass="asaM1.ecore#//Security_PortFourni"/>
+    <genClasses ecoreClass="asaM1.ecore#//Database_PortFourni"/>
+    <genClasses ecoreClass="asaM1.ecore#//Role_fourni_RPC1"/>
+    <genClasses ecoreClass="asaM1.ecore#//Role_Requis_RPC1"/>
+    <genClasses ecoreClass="asaM1.ecore#//Role_Fourni_RPC2"/>
+    <genClasses ecoreClass="asaM1.ecore#//Role_Requis_RPC2"/>
+    <genClasses ecoreClass="asaM1.ecore#//Role_Fourni_RPC3">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Role_Fourni_RPC3/attachementrpc3sm"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Role_Requis_RPC3">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//Role_Requis_RPC3/attachementrpc3cm"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//BindingServeur">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//BindingServeur/external_socket_fourni"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//BindingServeur/external_socket_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//BindingServeur/serveur_port_requis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference asaM1.ecore#//BindingServeur/serveur_port_fourni"/>
+    </genClasses>
+    <genClasses ecoreClass="asaM1.ecore#//Security_PortRequis"/>
+    <genClasses ecoreClass="asaM1.ecore#//Database_PortRequis"/>
+    <genClasses ecoreClass="asaM1.ecore#//Connection_PortRequis"/>
+    <genClasses ecoreClass="asaM1.ecore#//Client_Port_Requis"/>
+    <genClasses ecoreClass="asaM1.ecore#//Serveur_Port_Fourni"/>
+    <genClasses ecoreClass="asaM1.ecore#//NewEClass40"/>
+  </genPackages>
+</genmodel:GenModel>

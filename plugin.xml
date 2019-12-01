@@ -14,4 +14,12 @@
             genModel="model/aSA.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated asaM1 -->
+      <package
+            uri="http://www.example.org/asam1"
+            class="asaM1.AsaM1Package"
+            genModel="model/asaM1.genmodel"/>
+   </extension>
+
 </plugin>
