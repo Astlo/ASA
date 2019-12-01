@@ -9,6 +9,8 @@ import asaM1.RPC;
 import asaM1.RPC_Role_Fourni;
 import asaM1.RPC_Role_Requis;
 
+import java.util.HashMap;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -39,7 +41,8 @@ public class RPCImpl extends ConnecteurImpl implements RPC {
 	 * @generated
 	 * @ordered
 	 */
-	protected RPC_Role_Requis rpc_role_requis;
+	protected RPC_Role_Requis rpc_role_requisclient;
+	protected RPC_Role_Requis rpc_role_requisserveur;
 
 	/**
 	 * The cached value of the '{@link #getRpc_role_fourni() <em>Rpc role fourni</em>}' reference.
@@ -49,8 +52,13 @@ public class RPCImpl extends ConnecteurImpl implements RPC {
 	 * @generated
 	 * @ordered
 	 */
-	protected RPC_Role_Fourni rpc_role_fourni;
+	protected RPC_Role_Fourni rpc_role_fourniclient;
+	protected RPC_Role_Fourni rpc_role_fourniserveur;
 
+
+	private HashMap<RPC_Role_Requis, RPC_Role_Fourni> glueRPC;
+	
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,6 +66,29 @@ public class RPCImpl extends ConnecteurImpl implements RPC {
 	 */
 	protected RPCImpl() {
 		super();
+	}
+	
+	protected RPCImpl(SystemImpl observer) {
+		super();
+		
+		rpc_role_requisclient = new RPC_Role_RequisImpl();
+		rpc_role_requisserveur = new RPC_Role_RequisImpl();
+		rpc_role_fourniclient = new RPC_Role_FourniImpl();
+		rpc_role_fourniserveur = new RPC_Role_FourniImpl();
+		
+		rpc_role_requisclient.addObserver(this);
+		rpc_role_requisserveur.addObserver(this);
+		rpc_role_fourniclient.addObserver(observer);
+		rpc_role_fourniserveur.addObserver(observer);
+		
+		glueRPC.put(rpc_role_requisclient, rpc_role_fourniserveur);
+		glueRPC.put(rpc_role_requisserveur, rpc_role_fourniclient);
+		
+	}
+
+	public void transfertMessageRPC(RPC_Role_Requis role, String message) {
+		RPC_Role_Fourni newrole = glueRPC.get(role);
+		newrole.notifyConfig(newrole, message);
 	}
 
 	/**
@@ -69,155 +100,49 @@ public class RPCImpl extends ConnecteurImpl implements RPC {
 	protected EClass eStaticClass() {
 		return AsaM1Package.Literals.RPC;
 	}
+	
+	
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public RPC_Role_Requis getRpc_role_requis() {
-		if (rpc_role_requis != null && rpc_role_requis.eIsProxy()) {
-			InternalEObject oldRrpc_ole_requis = (InternalEObject)rpc_role_requis;
-			rpc_role_requis = (RPC_Role_Requis)eResolveProxy(oldRrpc_ole_requis);
-			if (rpc_role_requis != oldRrpc_ole_requis) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AsaM1Package.RPC__RRPC_OLE_REQUIS, oldRrpc_ole_requis, rpc_role_requis));
-			}
-		}
-		return rpc_role_requis;
+	public RPC_Role_Requis getRpc_role_requisclient() {
+		return rpc_role_requisclient;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RPC_Role_Requis basicGetRrpc_ole_requis() {
-		return rpc_role_requis;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public void setRrpc_ole_requis(RPC_Role_Requis newRrpc_ole_requis) {
-		RPC_Role_Requis oldRrpc_ole_requis = rpc_role_requis;
-		rpc_role_requis = newRrpc_ole_requis;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AsaM1Package.RPC__RRPC_OLE_REQUIS, oldRrpc_ole_requis, rpc_role_requis));
+	public void setRpc_role_requisclient(RPC_Role_Requis rpc_role_requisclient) {
+		this.rpc_role_requisclient = rpc_role_requisclient;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public RPC_Role_Fourni getRpc_role_fourni() {
-		if (rpc_role_fourni != null && rpc_role_fourni.eIsProxy()) {
-			InternalEObject oldRpc_role_fourni = (InternalEObject)rpc_role_fourni;
-			rpc_role_fourni = (RPC_Role_Fourni)eResolveProxy(oldRpc_role_fourni);
-			if (rpc_role_fourni != oldRpc_role_fourni) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AsaM1Package.RPC__RPC_ROLE_FOURNI, oldRpc_role_fourni, rpc_role_fourni));
-			}
-		}
-		return rpc_role_fourni;
+	public RPC_Role_Requis getRpc_role_requisserveur() {
+		return rpc_role_requisserveur;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RPC_Role_Fourni basicGetRpc_role_fourni() {
-		return rpc_role_fourni;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public void setRpc_role_fourni(RPC_Role_Fourni newRpc_role_fourni) {
-		RPC_Role_Fourni oldRpc_role_fourni = rpc_role_fourni;
-		rpc_role_fourni = newRpc_role_fourni;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AsaM1Package.RPC__RPC_ROLE_FOURNI, oldRpc_role_fourni, rpc_role_fourni));
+	public void setRpc_role_requisserveur(RPC_Role_Requis rpc_role_requisserveur) {
+		this.rpc_role_requisserveur = rpc_role_requisserveur;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AsaM1Package.RPC__RRPC_OLE_REQUIS:
-				if (resolve) return getRpc_role_requis();
-				return basicGetRrpc_ole_requis();
-			case AsaM1Package.RPC__RPC_ROLE_FOURNI:
-				if (resolve) return getRpc_role_fourni();
-				return basicGetRpc_role_fourni();
-		}
-		return super.eGet(featureID, resolve, coreType);
+	public RPC_Role_Fourni getRpc_role_fourniclient() {
+		return rpc_role_fourniclient;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AsaM1Package.RPC__RRPC_OLE_REQUIS:
-				setRrpc_ole_requis((RPC_Role_Requis)newValue);
-				return;
-			case AsaM1Package.RPC__RPC_ROLE_FOURNI:
-				setRpc_role_fourni((RPC_Role_Fourni)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
+	public void setRpc_role_fourniclient(RPC_Role_Fourni rpc_role_fourniclient) {
+		this.rpc_role_fourniclient = rpc_role_fourniclient;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AsaM1Package.RPC__RRPC_OLE_REQUIS:
-				setRrpc_ole_requis((RPC_Role_Requis)null);
-				return;
-			case AsaM1Package.RPC__RPC_ROLE_FOURNI:
-				setRpc_role_fourni((RPC_Role_Fourni)null);
-				return;
-		}
-		super.eUnset(featureID);
+	public RPC_Role_Fourni getRpc_role_fourniserveur() {
+		return rpc_role_fourniserveur;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AsaM1Package.RPC__RRPC_OLE_REQUIS:
-				return rpc_role_requis != null;
-			case AsaM1Package.RPC__RPC_ROLE_FOURNI:
-				return rpc_role_fourni != null;
-		}
-		return super.eIsSet(featureID);
+	public void setRpc_role_fourniserveur(RPC_Role_Fourni rpc_role_fourniserveur) {
+		this.rpc_role_fourniserveur = rpc_role_fourniserveur;
 	}
+
+
 
 } //RPCImpl

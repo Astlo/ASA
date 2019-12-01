@@ -5,6 +5,7 @@ package asaM1.impl;
 import aSA.impl.RoleRequisImpl;
 
 import asaM1.AsaM1Package;
+import asaM1.RPC;
 import asaM1.RPC_Role_Requis;
 
 import org.eclipse.emf.ecore.EClass;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class RPC_Role_RequisImpl extends RoleRequisImpl implements RPC_Role_Requis {
+	RPC observer;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26,6 +28,18 @@ public class RPC_Role_RequisImpl extends RoleRequisImpl implements RPC_Role_Requ
 		super();
 	}
 
+
+	@Override
+	public void addObserver(RPC observer) {
+		this.observer = observer;
+		
+	}
+
+	@Override
+	public void notifyRPC(String message) {
+		this.observer.transfertMessageRPC(this, message);
+		
+	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

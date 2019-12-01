@@ -22,7 +22,6 @@ import asaM1.Connection_PortRequis;
 import asaM1.Database;
 import asaM1.Database_PortFourni;
 import asaM1.Database_PortRequis;
-import asaM1.NewEClass40;
 import asaM1.RPC;
 import asaM1.RPC1;
 import asaM1.RPC2;
@@ -133,7 +132,6 @@ public class AsaM1FactoryImpl extends EFactoryImpl implements AsaM1Factory {
 			case AsaM1Package.CONNECTION_PORT_REQUIS: return createConnection_PortRequis();
 			case AsaM1Package.CLIENT_PORT_REQUIS: return createClient_Port_Requis();
 			case AsaM1Package.SERVEUR_PORT_FOURNI: return createServeur_Port_Fourni();
-			case AsaM1Package.NEW_ECLASS40: return createNewEClass40();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -555,17 +553,6 @@ public class AsaM1FactoryImpl extends EFactoryImpl implements AsaM1Factory {
 	public Serveur_Port_Fourni createServeur_Port_Fourni() {
 		Serveur_Port_FourniImpl serveur_Port_Fourni = new Serveur_Port_FourniImpl();
 		return serveur_Port_Fourni;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NewEClass40 createNewEClass40() {
-		NewEClass40Impl newEClass40 = new NewEClass40Impl();
-		return newEClass40;
 	}
 
 	/**

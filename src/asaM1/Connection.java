@@ -3,6 +3,7 @@
 package asaM1;
 
 import aSA.Composant;
+import asaM1.impl.Connection_PortRequisImpl;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -47,5 +48,7 @@ public interface Connection extends Composant {
 	 * @generated
 	 */
 	EList<Connection_PortRequis> getConnection_port_requis();
+
+	void transfert(Connection_PortRequis connection_PortRequisImpl, String message);
 
 } // Connection

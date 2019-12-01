@@ -5,6 +5,8 @@ package asaM1.impl;
 import aSA.impl.ConfigurationImpl;
 
 import asaM1.AsaM1Package;
+import asaM1.AttacheClientRPC;
+import asaM1.AttacheServeurRPC;
 import asaM1.AttachementRPC1CM;
 import asaM1.AttachementRPC1DB;
 import asaM1.AttachementRPC2DB;
@@ -13,12 +15,18 @@ import asaM1.AttachementRPC3CM;
 import asaM1.AttachementRPC3SM;
 import asaM1.BindingServeur;
 import asaM1.Connection;
+import asaM1.Connection_PortFourni;
 import asaM1.Database;
 import asaM1.RPC1;
 import asaM1.RPC2;
 import asaM1.RPC3;
+import asaM1.RPC_Role_Fourni;
+import asaM1.Role_fourni_RPC1;
 import asaM1.Security;
+import asaM1.Server;
 import asaM1.Server_Detail;
+
+import java.util.HashMap;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -183,6 +191,11 @@ public class Server_DetailImpl extends ConfigurationImpl implements Server_Detai
 	 */
 	protected BindingServeur bindingserveur;
 
+	HashMap<Role_fourni_RPC1, AttachementRPC1CM> rolesCorrespondanceCM;
+	HashMap<Role_fourni_RPC1, AttachementRPC1DB> rolesCorrespondanceDB;
+	
+	private Server observer;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,6 +204,45 @@ public class Server_DetailImpl extends ConfigurationImpl implements Server_Detai
 	protected Server_DetailImpl() {
 		super();
 	}
+
+	protected Server_DetailImpl(Server observer) {
+		super();
+		connection = new ConnectionImpl(this);
+		database = new DatabaseImpl(this);
+		security = new SecurityImpl();
+		
+		rpc1 = new RPC1Impl();
+		rpc2 = new RPC2Impl();
+		rpc3 = new RPC3Impl();
+		
+		attachementrpc1cm = new AttachementRPC1CMImpl(connection.getConnection_port_fourni().get(0), rpc1.getRpc_role_requiscm(), connection.getConnection_port_requis().get(0), rpc1.getRpc_role_fournicm());
+		attachementrpc1db = new AttachementRPC1DBImpl(database.getDatabase_port_fourni().get(0), rpc1.getRpc_role_requisdb(), database.getDatabase_port_requis().get(0), rpc1.getRpc_role_fournidb());
+		attachementrpc2db = new AttachementRPC2DBImpl();
+		attachementrpc2sm = new AttachementRPC2SMImpl();
+		attachementrpc3cm = new AttachementRPC3CMImpl();
+		attachementrpc3sm = new AttachementRPC3SMImpl();
+		
+		rolesCorrespondanceCM = new HashMap<Role_fourni_RPC1, AttachementRPC1CM>();
+		rolesCorrespondanceDB = new HashMap<Role_fourni_RPC1, AttachementRPC1DB>();
+
+		rolesCorrespondanceCM.put(rpc1.getRpc_role_fournicm(), attachementrpc1cm);
+		rolesCorrespondanceDB.put(rpc1.getRpc_role_fournidb(), attachementrpc1db);
+		
+		bindingserveur = new BindingServeurImpl();
+	}
+	
+	@Override
+	public void transfert(Connection_PortFourni port, String message) {
+		if(rolesCorrespondanceCM.containsKey(port))
+		{
+			attachementrpc1cm.getCorrespondance(port).notifyClient(message);
+		}
+		else if (rolesCorrespondanceDB.containsKey(port))
+		{
+			attachementrpc1db.getCorrespondance(port).notifyDB(message);
+		}
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

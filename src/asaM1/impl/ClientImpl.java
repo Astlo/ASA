@@ -60,6 +60,25 @@ public class ClientImpl extends ComposantImpl implements Client {
 		super();
 	}
 
+	protected ClientImpl(SystemImpl observer) {
+		super();
+		client_port_fourni = new Client_Port_FourniImpl();
+		client_port_requis = new Client_Port_RequisImpl();
+		
+		client_port_requis.addObserver(this);
+		client_port_fourni.addObserver(observer);
+	}
+	@Override
+	public void envoieRequeteClient(Client_Port_Fourni port, String message) {
+		port.notifyConfig(message);
+	}
+	
+	@Override
+	public void receptionReponse(String message) {
+		System.out.println(message);
+	}
+
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,5 +238,7 @@ public class ClientImpl extends ComposantImpl implements Client {
 		}
 		return super.eIsSet(featureID);
 	}
+
+
 
 } //ClientImpl

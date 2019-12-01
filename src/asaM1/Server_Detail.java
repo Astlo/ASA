@@ -3,6 +3,7 @@
 package asaM1;
 
 import aSA.Configuration;
+import asaM1.impl.Connection_PortFourniImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -318,5 +319,7 @@ public interface Server_Detail extends Configuration {
 	 * @generated
 	 */
 	void setBindingserveur(BindingServeur value);
+
+	void transfert(Connection_PortFourni connection_PortFourniImpl, String message);
 
 } // Server_Detail

@@ -15,4 +15,6 @@ import aSA.RoleFourni;
  * @generated
  */
 public interface Role_fourni_RPC1 extends RoleFourni {
+
+	void addObserver(Server_Detail observer);
 } // Role_fourni_RPC1

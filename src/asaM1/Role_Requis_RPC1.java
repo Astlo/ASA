@@ -15,4 +15,10 @@ import aSA.RoleRequis;
  * @generated
  */
 public interface Role_Requis_RPC1 extends RoleRequis {
+
+	void addObserver(RPC1 observer);
+
+	void notifyClient(String message);
+
+	void notifyDB(String message);
 } // Role_Requis_RPC1

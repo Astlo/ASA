@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class Client_Port_RequisImpl extends PortRequisImpl implements Client_Port_Requis {
+	
+	ClientImpl observer;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26,6 +28,16 @@ public class Client_Port_RequisImpl extends PortRequisImpl implements Client_Por
 		super();
 	}
 
+	@Override
+	public void addObserver(ClientImpl observer) {
+		this.observer = observer;
+		
+	}
+
+	@Override
+	public void notifyClient(String message) {
+		this.observer.receptionReponse(message);
+	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

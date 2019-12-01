@@ -6,8 +6,12 @@ import aSA.impl.ConnecteurImpl;
 
 import asaM1.AsaM1Package;
 import asaM1.RPC1;
+import asaM1.RPC_Role_Fourni;
+import asaM1.RPC_Role_Requis;
 import asaM1.Role_Requis_RPC1;
 import asaM1.Role_fourni_RPC1;
+
+import java.util.HashMap;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -51,6 +55,16 @@ public class RPC1Impl extends ConnecteurImpl implements RPC1 {
 	 */
 	protected Role_fourni_RPC1 role_fourni_rpc1;
 
+	private Role_Requis_RPC1Impl rpc_role_requiscm;
+
+	private Role_Requis_RPC1Impl rpc_role_requisdb;
+
+	private Role_fourni_RPC1Impl rpc_role_fournicm;
+
+	private Role_fourni_RPC1Impl rpc_role_fournidb;
+
+	private HashMap<Role_Requis_RPC1Impl, Role_fourni_RPC1Impl> glueRPC;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,6 +72,54 @@ public class RPC1Impl extends ConnecteurImpl implements RPC1 {
 	 */
 	protected RPC1Impl() {
 		super();
+	}
+
+	protected RPC1Impl(Server_DetailImpl observer) {
+		super();
+		rpc_role_requiscm = new Role_Requis_RPC1Impl();
+		rpc_role_requisdb = new Role_Requis_RPC1Impl();
+		rpc_role_fournicm = new Role_fourni_RPC1Impl();
+		rpc_role_fournidb = new Role_fourni_RPC1Impl();
+		
+		rpc_role_requiscm.addObserver(this);
+		rpc_role_requisdb.addObserver(this);
+		rpc_role_fournicm.addObserver(observer);
+		rpc_role_fournidb.addObserver(observer);
+		
+		glueRPC.put(rpc_role_requiscm, rpc_role_fournidb);
+		glueRPC.put(rpc_role_requisdb, rpc_role_fournicm);
+	}
+	@Override
+	public Role_Requis_RPC1Impl getRpc_role_requiscm() {
+		return rpc_role_requiscm;
+	}
+	@Override
+	public void setRpc_role_requiscm(Role_Requis_RPC1Impl rpc_role_requiscm) {
+		this.rpc_role_requiscm = rpc_role_requiscm;
+	}
+	@Override
+	public Role_Requis_RPC1Impl getRpc_role_requisdb() {
+		return rpc_role_requisdb;
+	}
+	@Override
+	public void setRpc_role_requisdb(Role_Requis_RPC1Impl rpc_role_requisdb) {
+		this.rpc_role_requisdb = rpc_role_requisdb;
+	}
+	@Override
+	public Role_fourni_RPC1Impl getRpc_role_fournicm() {
+		return rpc_role_fournicm;
+	}
+	@Override
+	public void setRpc_role_fournicm(Role_fourni_RPC1Impl rpc_role_fournicm) {
+		this.rpc_role_fournicm = rpc_role_fournicm;
+	}
+	@Override
+	public Role_fourni_RPC1Impl getRpc_role_fournidb() {
+		return rpc_role_fournidb;
+	}
+	@Override
+	public void setRpc_role_fournidb(Role_fourni_RPC1Impl rpc_role_fournidb) {
+		this.rpc_role_fournidb = rpc_role_fournidb;
 	}
 
 	/**

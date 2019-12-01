@@ -11,6 +11,8 @@ import asaM1.Client_Port_Requis;
 import asaM1.RPC_Role_Fourni;
 import asaM1.RPC_Role_Requis;
 
+import java.util.HashMap;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -75,6 +77,9 @@ public class AttacheClientRPCImpl extends AttachementImpl implements AttacheClie
 	 */
 	protected Client_Port_Requis client_port_requis;
 
+	private HashMap<Client_Port_Fourni, RPC_Role_Requis> correspondance_fourni;
+	private HashMap<RPC_Role_Fourni, Client_Port_Requis> correspondance_requis;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,6 +89,32 @@ public class AttacheClientRPCImpl extends AttachementImpl implements AttacheClie
 		super();
 	}
 
+	protected AttacheClientRPCImpl(Client_Port_Fourni client_port_fourni, RPC_Role_Requis rpc_role_requisclient,
+			Client_Port_Requis client_port_requis, RPC_Role_Fourni rpc_role_fourniclient) {
+		super();
+		this.client_port_fourni = client_port_fourni;
+		this.client_port_requis = client_port_requis;
+		this.role_fourni = rpc_role_fourniclient;
+		this.role_requis = rpc_role_requisclient;
+		
+		correspondance_fourni = new HashMap<Client_Port_Fourni, RPC_Role_Requis>();
+		correspondance_requis = new HashMap<RPC_Role_Fourni,Client_Port_Requis >();
+		
+		correspondance_fourni.put(client_port_fourni, role_requis);
+		correspondance_requis.put(role_fourni, client_port_requis);
+		
+	}
+
+	@Override
+	public Client_Port_Requis getCorrespondance(RPC_Role_Fourni role) {	
+		return correspondance_requis.get(role);
+	}
+	
+	@Override
+	public RPC_Role_Requis getCorrespondance(Client_Port_Fourni port) {	
+		return correspondance_fourni.get(port);
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -345,5 +376,6 @@ public class AttacheClientRPCImpl extends AttachementImpl implements AttacheClie
 		}
 		return super.eIsSet(featureID);
 	}
+
 
 } //AttacheClientRPCImpl

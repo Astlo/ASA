@@ -8,8 +8,12 @@ import asaM1.AsaM1Package;
 import asaM1.AttacheClientRPC;
 import asaM1.AttacheServeurRPC;
 import asaM1.Client;
+import asaM1.Client_Port_Fourni;
 import asaM1.RPC;
+import asaM1.RPC_Role_Fourni;
 import asaM1.Server;
+
+import java.util.HashMap;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -85,7 +89,10 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 	 * @ordered
 	 */
 	protected AttacheClientRPC attacheclientrpc;
-
+	
+	HashMap<RPC_Role_Fourni, AttacheClientRPC> rolesCorrespondanceClient;
+	HashMap<RPC_Role_Fourni, AttacheServeurRPC> rolesCorrespondanceServeur;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,13 +103,33 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 		client = new ClientImpl(this);
 		serveur = new ServerImpl(this);
 		rpc = new RPCImpl(this);
-		attacheclientrpc = new AttacheClientRPCImpl(client.getClient_port_fourni(), rpc.getRpc_role_requis(), serveur.getServeur_port_requis(), rpc.getRpc_role_fourni());
-		attacheserveurrpc = new AttacheServeurRPCImpl(serveur.getServeur_port_fourni(), rpc.getRpc_role_requis(), client.getClient_port_requis(), rpc.getRpc_role_fourni());
+		attacheclientrpc = new AttacheClientRPCImpl(client.getClient_port_fourni(), rpc.getRpc_role_requisclient(), client.getClient_port_requis(), rpc.getRpc_role_fourniclient());
+		attacheserveurrpc = new AttacheServeurRPCImpl(serveur.getServeur_port_fourni().get(0), rpc.getRpc_role_requisserveur(), serveur.getServeur_port_requis().get(0), rpc.getRpc_role_fourniserveur());
+
+		rolesCorrespondanceClient = new HashMap<RPC_Role_Fourni, AttacheClientRPC>();
+		rolesCorrespondanceServeur = new HashMap<RPC_Role_Fourni, AttacheServeurRPC>();
 		
+		rolesCorrespondanceClient.put(rpc.getRpc_role_fourniclient(), attacheclientrpc);
+		rolesCorrespondanceServeur.put(rpc.getRpc_role_fourniserveur(), attacheserveurrpc);
 	}
 	
 	public void start() {
-		
+		client.envoieRequeteClient(client.getClient_port_fourni(), "voiture");
+	}
+
+	public void transfert(Client_Port_Fourni port, String message) {
+		attacheclientrpc.getCorrespondance(port).notifyRPC(message);
+	}
+	
+	public void transfert(RPC_Role_Fourni role, String message) {
+		if(rolesCorrespondanceClient.containsKey(role))
+		{
+			attacheclientrpc.getCorrespondance(role).notifyClient(message);
+		}
+		else if (rolesCorrespondanceServeur.containsKey(role))
+		{
+			attacheserveurrpc.getCorrespondance(role).notifyServeur(message);
+		}
 	}
 
 	/**
@@ -122,14 +149,6 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 	 */
 	@Override
 	public RPC getRpc() {
-		if (rpc != null && rpc.eIsProxy()) {
-			InternalEObject oldRpc = (InternalEObject)rpc;
-			rpc = (RPC)eResolveProxy(oldRpc);
-			if (rpc != oldRpc) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AsaM1Package.SYSTEM__RPC, oldRpc, rpc));
-			}
-		}
 		return rpc;
 	}
 
@@ -148,11 +167,8 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 	 * @generated
 	 */
 	@Override
-	public void setRpc(RPC newRpc) {
-		RPC oldRpc = rpc;
+	public void setRpc(RPCImpl newRpc) {
 		rpc = newRpc;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AsaM1Package.SYSTEM__RPC, oldRpc, rpc));
 	}
 
 	/**
@@ -417,5 +433,13 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 		}
 		return super.eIsSet(featureID);
 	}
+
+	@Override
+	public void setRpc(RPC value) {
+		rpc = value;
+		
+	}
+
+
 
 } //SystemImpl

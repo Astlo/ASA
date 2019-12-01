@@ -24,7 +24,6 @@ import asaM1.Connection_PortRequis;
 import asaM1.Database;
 import asaM1.Database_PortFourni;
 import asaM1.Database_PortRequis;
-import asaM1.NewEClass40;
 import asaM1.RPC_Role_Fourni;
 import asaM1.RPC_Role_Requis;
 import asaM1.Role_Fourni_RPC2;
@@ -1912,7 +1911,6 @@ public class AsaM1PackageImpl extends EPackageImpl implements AsaM1Package {
 
 		initEClass(serveur_Port_FourniEClass, Serveur_Port_Fourni.class, "Serveur_Port_Fourni", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(newEClass40EClass, NewEClass40.class, "NewEClass40", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

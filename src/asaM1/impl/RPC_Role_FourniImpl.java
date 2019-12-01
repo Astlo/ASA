@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class RPC_Role_FourniImpl extends RoleFourniImpl implements RPC_Role_Fourni {
+	SystemImpl observer;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25,7 +26,19 @@ public class RPC_Role_FourniImpl extends RoleFourniImpl implements RPC_Role_Four
 	protected RPC_Role_FourniImpl() {
 		super();
 	}
+	
+	@Override
+	public void addObserver(SystemImpl observer) {
+		this.observer = observer;
+		
+	}
 
+	@Override
+	public void notifyConfig(RPC_Role_Fourni role, String message) {
+		this.observer.transfert(role, message);
+		
+	}	
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

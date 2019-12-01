@@ -111,5 +111,9 @@ public interface AttacheServeurRPC extends Attachement {
 	 * @generated
 	 */
 	void setServeur_port_requis(Serveur_Port_Requis value);
+	
+	Serveur_Port_Requis getCorrespondance(RPC_Role_Fourni role);
+	
+	RPC_Role_Requis getCorrespondance(Serveur_Port_Fourni port);
 
 } // AttacheServeurRPC

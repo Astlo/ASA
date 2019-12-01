@@ -61,6 +61,10 @@ public class DatabaseImpl extends ComposantImpl implements Database {
 		super();
 	}
 
+	protected DatabaseImpl(Server_DetailImpl server_DetailImpl) {
+		super();
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

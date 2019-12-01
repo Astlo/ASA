@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class Client_Port_FourniImpl extends PortFourniImpl implements Client_Port_Fourni {
+	SystemImpl observer;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26,6 +28,18 @@ public class Client_Port_FourniImpl extends PortFourniImpl implements Client_Por
 		super();
 	}
 
+	@Override
+	public void addObserver(SystemImpl observer) {
+		this.observer = observer;
+		
+	}
+
+	@Override
+	public void notifyConfig(String message) {
+		this.observer.transfert(this, message);
+		
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

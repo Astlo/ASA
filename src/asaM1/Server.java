@@ -3,6 +3,7 @@
 package asaM1;
 
 import aSA.Composant;
+import asaM1.impl.Serveur_Port_RequisImpl;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -70,5 +71,7 @@ public interface Server extends Composant {
 	 * @generated
 	 */
 	void setServer_detail(Server_Detail value);
+
+	void transfert(Serveur_Port_Requis serveur_Port_RequisImpl, String message);
 
 } // Server

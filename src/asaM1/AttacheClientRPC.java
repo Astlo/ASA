@@ -112,4 +112,8 @@ public interface AttacheClientRPC extends Attachement {
 	 */
 	void setClient_port_requis(Client_Port_Requis value);
 
+	RPC_Role_Requis getCorrespondance(Client_Port_Fourni port);
+
+	Client_Port_Requis getCorrespondance(RPC_Role_Fourni role);
+
 } // AttacheClientRPC

@@ -5,6 +5,7 @@ package asaM1.impl;
 import aSA.impl.PortRequisImpl;
 
 import asaM1.AsaM1Package;
+import asaM1.Server;
 import asaM1.Serveur_Port_Requis;
 
 import org.eclipse.emf.ecore.EClass;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class Serveur_Port_RequisImpl extends PortRequisImpl implements Serveur_Port_Requis {
+	Server observer;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24,6 +26,16 @@ public class Serveur_Port_RequisImpl extends PortRequisImpl implements Serveur_P
 	 */
 	protected Serveur_Port_RequisImpl() {
 		super();
+	}
+	
+	@Override
+	public void addObserver(ServerImpl serverImpl) {
+		this.observer= serverImpl;
+	}
+
+	@Override
+	public void notifyServeur(String message) {
+		this.observer.transfert(this, message);
 	}
 
 	/**
@@ -35,5 +47,6 @@ public class Serveur_Port_RequisImpl extends PortRequisImpl implements Serveur_P
 	protected EClass eStaticClass() {
 		return AsaM1Package.Literals.SERVEUR_PORT_REQUIS;
 	}
+
 
 } //Serveur_Port_RequisImpl

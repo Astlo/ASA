@@ -112,4 +112,6 @@ public interface AttachementRPC1DB extends Attachement {
 	 */
 	void setDatabase_portfourni(Database_PortFourni value);
 
+	Role_Requis_RPC1 getCorrespondance(Connection_PortFourni port);
+
 } // AttachementRPC1DB

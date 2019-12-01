@@ -5,6 +5,7 @@ package asaM1.impl;
 import aSA.impl.PortRequisImpl;
 
 import asaM1.AsaM1Package;
+import asaM1.Connection;
 import asaM1.Connection_PortRequis;
 
 import org.eclipse.emf.ecore.EClass;
@@ -17,6 +18,8 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class Connection_PortRequisImpl extends PortRequisImpl implements Connection_PortRequis {
+	Connection observer;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34,6 +37,16 @@ public class Connection_PortRequisImpl extends PortRequisImpl implements Connect
 	@Override
 	protected EClass eStaticClass() {
 		return AsaM1Package.Literals.CONNECTION_PORT_REQUIS;
+	}
+
+	@Override
+	public void notifyConnectionManager(String message) {
+		this.observer.transfert(this, message);		
+	}
+
+	@Override
+	public void addObserver(Connection observer) {
+		this.observer = observer;
 	}
 
 } //Connection_PortRequisImpl

@@ -3,6 +3,7 @@
 package asaM1;
 
 import aSA.Configuration;
+import asaM1.impl.RPCImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -136,5 +137,7 @@ public interface System extends Configuration {
 	void setAttacheclientrpc(AttacheClientRPC value);
 	
 	void start();
+
+	void setRpc(RPCImpl newRpc);
 
 } // System

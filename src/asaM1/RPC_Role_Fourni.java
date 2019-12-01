@@ -3,6 +3,8 @@
 package asaM1;
 
 import aSA.RoleFourni;
+import asaM1.impl.RPC_Role_FourniImpl;
+import asaM1.impl.SystemImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,4 +17,9 @@ import aSA.RoleFourni;
  * @generated
  */
 public interface RPC_Role_Fourni extends RoleFourni {
+
+	void addObserver(SystemImpl observer);
+
+	void notifyConfig(RPC_Role_Fourni role, String message);
+
 } // RPC_Role_Fourni

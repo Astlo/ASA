@@ -35,7 +35,6 @@ import asaM1.Connection_PortRequis;
 import asaM1.Database;
 import asaM1.Database_PortFourni;
 import asaM1.Database_PortRequis;
-import asaM1.NewEClass40;
 import asaM1.RPC;
 import asaM1.RPC1;
 import asaM1.RPC2;
@@ -270,10 +269,6 @@ public class AsaM1AdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseServeur_Port_Fourni(Serveur_Port_Fourni object) {
 				return createServeur_Port_FourniAdapter();
-			}
-			@Override
-			public Adapter caseNewEClass40(NewEClass40 object) {
-				return createNewEClass40Adapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {

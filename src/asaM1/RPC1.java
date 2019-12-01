@@ -3,6 +3,8 @@
 package asaM1;
 
 import aSA.Connecteur;
+import asaM1.impl.Role_Requis_RPC1Impl;
+import asaM1.impl.Role_fourni_RPC1Impl;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,5 +67,21 @@ public interface RPC1 extends Connecteur {
 	 * @generated
 	 */
 	void setRole_fourni_rpc1(Role_fourni_RPC1 value);
+
+	void setRpc_role_fournidb(Role_fourni_RPC1Impl rpc_role_fournidb);
+
+	Role_fourni_RPC1Impl getRpc_role_fournidb();
+
+	void setRpc_role_fournicm(Role_fourni_RPC1Impl rpc_role_fournicm);
+
+	Role_fourni_RPC1Impl getRpc_role_fournicm();
+
+	void setRpc_role_requisdb(Role_Requis_RPC1Impl rpc_role_requisdb);
+
+	Role_Requis_RPC1Impl getRpc_role_requisdb();
+
+	void setRpc_role_requiscm(Role_Requis_RPC1Impl rpc_role_requiscm);
+
+	Role_Requis_RPC1Impl getRpc_role_requiscm();
 
 } // RPC1

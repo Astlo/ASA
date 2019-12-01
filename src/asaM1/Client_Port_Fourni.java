@@ -3,6 +3,7 @@
 package asaM1;
 
 import aSA.PortFourni;
+import asaM1.impl.SystemImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,4 +16,8 @@ import aSA.PortFourni;
  * @generated
  */
 public interface Client_Port_Fourni extends PortFourni {
+
+	void notifyConfig(String message);
+
+	void addObserver(SystemImpl observer);
 } // Client_Port_Fourni

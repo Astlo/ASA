@@ -6,10 +6,17 @@ import aSA.impl.AttachementImpl;
 
 import asaM1.AsaM1Package;
 import asaM1.AttachementRPC1DB;
+import asaM1.Connection_PortFourni;
 import asaM1.Database_PortFourni;
 import asaM1.Database_PortRequis;
+import asaM1.RPC_Role_Fourni;
+import asaM1.RPC_Role_Requis;
 import asaM1.Role_Requis_RPC1;
 import asaM1.Role_fourni_RPC1;
+import asaM1.Serveur_Port_Fourni;
+import asaM1.Serveur_Port_Requis;
+
+import java.util.HashMap;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -75,6 +82,18 @@ public class AttachementRPC1DBImpl extends AttachementImpl implements Attachemen
 	 */
 	protected Database_PortFourni database_portfourni;
 
+	private Database_PortFourni database_PortFourni;
+
+	private Database_PortRequis database_PortRequis;
+
+	private Role_fourni_RPC1 rpc_role_fournidb;
+
+	private Role_Requis_RPC1 rpc_role_requisdb;
+
+	private HashMap<Database_PortFourni, Role_Requis_RPC1> correspondance_fourni;
+
+	private HashMap<Role_fourni_RPC1, Database_PortRequis> correspondance_requis;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,6 +103,24 @@ public class AttachementRPC1DBImpl extends AttachementImpl implements Attachemen
 		super();
 	}
 
+	public AttachementRPC1DBImpl(Database_PortFourni database_PortFourni, Role_Requis_RPC1 rpc_role_requisdb,
+			Database_PortRequis database_PortRequis, Role_fourni_RPC1 rpc_role_fournidb) {
+		super();
+		this.database_PortFourni = database_PortFourni;
+		this.database_PortRequis = database_PortRequis;
+		this.rpc_role_fournidb = rpc_role_fournidb;
+		this.rpc_role_requisdb = rpc_role_requisdb;
+		
+		correspondance_fourni = new HashMap<Database_PortFourni, Role_Requis_RPC1>();
+		correspondance_requis = new HashMap<Role_fourni_RPC1,Database_PortRequis >();
+		
+		correspondance_fourni.put(database_PortFourni, rpc_role_requisdb);
+		correspondance_requis.put(rpc_role_fournidb, database_PortRequis);
+	}
+
+	@Override
+	public Role_Requis_RPC1 getCorrespondance(Connection_PortFourni port) {
+	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -345,5 +382,6 @@ public class AttachementRPC1DBImpl extends AttachementImpl implements Attachemen
 		}
 		return super.eIsSet(featureID);
 	}
+
 
 } //AttachementRPC1DBImpl

@@ -66,4 +66,8 @@ public interface Client extends Composant {
 	 */
 	void setClient_port_requis(Client_Port_Requis value);
 
+	void envoieRequeteClient(Client_Port_Fourni client_port_fourni, String string);
+
+	void receptionReponse(String message);
+
 } // Client

@@ -2,25 +2,49 @@
  */
 package asaM1.impl;
 
+import aSA.Attachement;
+import aSA.Binding;
+import aSA.Composant;
+import aSA.Connecteur;
+import aSA.Interface;
 import aSA.impl.ComposantImpl;
 
 import asaM1.AsaM1Package;
+import asaM1.AttachementRPC1CM;
+import asaM1.AttachementRPC1DB;
+import asaM1.AttachementRPC2DB;
+import asaM1.AttachementRPC2SM;
+import asaM1.AttachementRPC3CM;
+import asaM1.AttachementRPC3SM;
+import asaM1.BindingServeur;
+import asaM1.Connection;
+import asaM1.Database;
+import asaM1.RPC1;
+import asaM1.RPC2;
+import asaM1.RPC3;
+import asaM1.Security;
 import asaM1.Server;
 import asaM1.Server_Detail;
 import asaM1.Serveur_Port_Fourni;
 import asaM1.Serveur_Port_Requis;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -77,7 +101,35 @@ public class ServerImpl extends ComposantImpl implements Server {
 	protected ServerImpl() {
 		super();
 	}
+	
+	protected ServerImpl(SystemImpl observer) {
+		super();
+		
+		Serveur_Port_Fourni fourni_rpc = new Serveur_Port_FourniImpl();
+		Serveur_Port_Requis requis_rpc = new Serveur_Port_RequisImpl();
+		Serveur_Port_Fourni fourni_binding = new Serveur_Port_FourniImpl();
+		Serveur_Port_Requis requis_binding = new Serveur_Port_RequisImpl();
+		
+		fourni_rpc.addObserver(observer);
+		requis_rpc.addObserver(this);
+		fourni_binding.addObserver(observer);
+		requis_binding.addObserver(this);
+		
+		server_detail = new Server_DetailImpl(this); 
+			
+		
+		serveur_port_requis.add(requis_rpc);
+		serveur_port_requis.add(requis_binding);
+		serveur_port_fourni.add(fourni_rpc);
+		serveur_port_fourni.add(fourni_binding);
+		
+	}
 
+	@Override
+	public void transfert(Serveur_Port_Requis serveur_Port_RequisImpl, String message) {
+		server_detail.getBindingserveur().getExternal_socket_requis().notifyConnectionManager(message);	
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -235,5 +287,6 @@ public class ServerImpl extends ComposantImpl implements Server {
 		}
 		return super.eIsSet(featureID);
 	}
+
 
 } //ServerImpl

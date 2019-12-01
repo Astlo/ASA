@@ -35,7 +35,6 @@ import asaM1.Connection_PortRequis;
 import asaM1.Database;
 import asaM1.Database_PortFourni;
 import asaM1.Database_PortRequis;
-import asaM1.NewEClass40;
 import asaM1.RPC;
 import asaM1.RPC1;
 import asaM1.RPC2;
@@ -428,12 +427,6 @@ public class AsaM1Switch<T> extends Switch<T> {
 				if (result == null) result = casePortFourni(serveur_Port_Fourni);
 				if (result == null) result = casePort(serveur_Port_Fourni);
 				if (result == null) result = caseInterface(serveur_Port_Fourni);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AsaM1Package.NEW_ECLASS40: {
-				NewEClass40 newEClass40 = (NewEClass40)theEObject;
-				T result = caseNewEClass40(newEClass40);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1008,21 +1001,6 @@ public class AsaM1Switch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseServeur_Port_Fourni(Serveur_Port_Fourni object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>New EClass40</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>New EClass40</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseNewEClass40(NewEClass40 object) {
 		return null;
 	}
 

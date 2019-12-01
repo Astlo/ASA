@@ -3,6 +3,7 @@
 package asaM1;
 
 import aSA.PortRequis;
+import asaM1.impl.ConnectionImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,4 +16,8 @@ import aSA.PortRequis;
  * @generated
  */
 public interface Connection_PortRequis extends PortRequis {
+
+	void notifyConnectionManager(String message);
+
+	void addObserver(Connection connectionImpl);
 } // Connection_PortRequis

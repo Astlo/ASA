@@ -6,6 +6,7 @@ import aSA.impl.RoleFourniImpl;
 
 import asaM1.AsaM1Package;
 import asaM1.Role_fourni_RPC1;
+import asaM1.Server_Detail;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -17,6 +18,8 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class Role_fourni_RPC1Impl extends RoleFourniImpl implements Role_fourni_RPC1 {
+	private Server_Detail observer;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31,9 +34,13 @@ public class Role_fourni_RPC1Impl extends RoleFourniImpl implements Role_fourni_
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	
 	protected EClass eStaticClass() {
 		return AsaM1Package.Literals.ROLE_FOURNI_RPC1;
+	}
+	@Override
+	public void addObserver(Server_Detail observer) {
+		this.observer = observer;
 	}
 
 } //Role_fourni_RPC1Impl

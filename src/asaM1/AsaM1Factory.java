@@ -363,14 +363,6 @@ public interface AsaM1Factory extends EFactory {
 	 */
 	Serveur_Port_Fourni createServeur_Port_Fourni();
 
-	/**
-	 * Returns a new object of class '<em>New EClass40</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>New EClass40</em>'.
-	 * @generated
-	 */
-	NewEClass40 createNewEClass40();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -112,4 +112,6 @@ public interface AttachementRPC1CM extends Attachement {
 	 */
 	void setRole_fourni_rpc1(Role_fourni_RPC1 value);
 
+	Role_Requis_RPC1 getCorrespondance(Connection_PortFourni port);
+
 } // AttachementRPC1CM

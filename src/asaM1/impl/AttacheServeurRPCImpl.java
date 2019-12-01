@@ -6,13 +6,17 @@ import aSA.impl.AttachementImpl;
 
 import asaM1.AsaM1Package;
 import asaM1.AttacheServeurRPC;
+import asaM1.Client_Port_Fourni;
+import asaM1.Client_Port_Requis;
 import asaM1.RPC_Role_Fourni;
 import asaM1.RPC_Role_Requis;
 import asaM1.Serveur_Port_Fourni;
 import asaM1.Serveur_Port_Requis;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.HashMap;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -75,6 +79,9 @@ public class AttacheServeurRPCImpl extends AttachementImpl implements AttacheSer
 	 */
 	protected Serveur_Port_Requis serveur_port_requis;
 
+	private HashMap<Serveur_Port_Fourni, RPC_Role_Requis> correspondance_fourni;
+	private HashMap<RPC_Role_Fourni, Serveur_Port_Requis> correspondance_requis;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,6 +91,34 @@ public class AttacheServeurRPCImpl extends AttachementImpl implements AttacheSer
 		super();
 	}
 
+	protected AttacheServeurRPCImpl(Serveur_Port_Fourni serveur_port_fourni,
+			RPC_Role_Requis rpc_role_requisserveur, Serveur_Port_Requis serveur_port_requis,
+			RPC_Role_Fourni rpc_role_fourniserveur) {
+		super();
+		this.serveur_port_fourni = serveur_port_fourni;
+		this.serveur_port_requis = serveur_port_requis;
+		this.role_fourni = rpc_role_fourniserveur;
+		this.role_requis = rpc_role_requisserveur;
+		
+		correspondance_fourni = new HashMap<Serveur_Port_Fourni, RPC_Role_Requis>();
+		correspondance_requis = new HashMap<RPC_Role_Fourni,Serveur_Port_Requis >();
+		
+		correspondance_fourni.put(serveur_port_fourni, role_requis);
+		correspondance_requis.put(role_fourni, serveur_port_requis);
+	}
+
+	@Override
+	public Serveur_Port_Requis getCorrespondance(RPC_Role_Fourni role) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RPC_Role_Requis getCorrespondance(Serveur_Port_Fourni port) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -345,5 +380,6 @@ public class AttacheServeurRPCImpl extends AttachementImpl implements AttacheSer
 		}
 		return super.eIsSet(featureID);
 	}
+
 
 } //AttacheServeurRPCImpl

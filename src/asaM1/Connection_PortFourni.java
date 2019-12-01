@@ -15,4 +15,8 @@ import aSA.PortFourni;
  * @generated
  */
 public interface Connection_PortFourni extends PortFourni {
+
+	void addObserver(Server_Detail observer);
+
+	void notifyServeur(String message);
 } // Connection_PortFourni

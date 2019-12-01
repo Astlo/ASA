@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class Serveur_Port_FourniImpl extends PortFourniImpl implements Serveur_Port_Fourni {
+	SystemImpl observer;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24,6 +25,12 @@ public class Serveur_Port_FourniImpl extends PortFourniImpl implements Serveur_P
 	 */
 	protected Serveur_Port_FourniImpl() {
 		super();
+	}
+	
+	@Override
+	public void addObserver(SystemImpl observer) {
+		// TODO Auto-generated method stub
+		this.observer = observer;
 	}
 
 	/**
@@ -35,5 +42,6 @@ public class Serveur_Port_FourniImpl extends PortFourniImpl implements Serveur_P
 	protected EClass eStaticClass() {
 		return AsaM1Package.Literals.SERVEUR_PORT_FOURNI;
 	}
+
 
 } //Serveur_Port_FourniImpl
