@@ -18,4 +18,6 @@ import asaM1.impl.SystemImpl;
 public interface Serveur_Port_Fourni extends PortFourni {
 
 	void addObserver(SystemImpl observer);
+
+	void notifyConfig(String message);
 } // Serveur_Port_Fourni

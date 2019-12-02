@@ -4,6 +4,7 @@ package asaM1;
 
 import aSA.Configuration;
 import asaM1.impl.Connection_PortFourniImpl;
+import asaM1.impl.Role_fourni_RPC1Impl;
 
 /**
  * <!-- begin-user-doc -->
@@ -321,5 +322,9 @@ public interface Server_Detail extends Configuration {
 	void setBindingserveur(BindingServeur value);
 
 	void transfert(Connection_PortFourni connection_PortFourniImpl, String message);
+
+	void transfert(Database_PortFourni port, String message);
+
+	void transfert(Role_fourni_RPC1 role, String message);
 
 } // Server_Detail

@@ -81,6 +81,7 @@ public class RPCImpl extends ConnecteurImpl implements RPC {
 		rpc_role_fourniclient.addObserver(observer);
 		rpc_role_fourniserveur.addObserver(observer);
 		
+		glueRPC = new HashMap<RPC_Role_Requis, RPC_Role_Fourni>();
 		glueRPC.put(rpc_role_requisclient, rpc_role_fourniserveur);
 		glueRPC.put(rpc_role_requisserveur, rpc_role_fourniclient);
 		

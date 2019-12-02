@@ -84,4 +84,6 @@ public interface RPC1 extends Connecteur {
 
 	Role_Requis_RPC1Impl getRpc_role_requiscm();
 
+	void transfertMessageDB(Role_Requis_RPC1 role_Requis_RPC1Impl, String message);
+
 } // RPC1

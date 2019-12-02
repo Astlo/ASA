@@ -114,4 +114,6 @@ public interface AttachementRPC1CM extends Attachement {
 
 	Role_Requis_RPC1 getCorrespondance(Connection_PortFourni port);
 
+	Connection_PortRequis getCorrespondance(Role_fourni_RPC1 role);
+
 } // AttachementRPC1CM

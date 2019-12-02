@@ -6,6 +6,7 @@ import aSA.impl.AttachementImpl;
 
 import asaM1.AsaM1Package;
 import asaM1.AttachementRPC1DB;
+import asaM1.Client_Port_Requis;
 import asaM1.Connection_PortFourni;
 import asaM1.Database_PortFourni;
 import asaM1.Database_PortRequis;
@@ -119,7 +120,13 @@ public class AttachementRPC1DBImpl extends AttachementImpl implements Attachemen
 	}
 
 	@Override
-	public Role_Requis_RPC1 getCorrespondance(Connection_PortFourni port) {
+	public Database_PortRequis getCorrespondance(Role_fourni_RPC1 role) {	
+		return correspondance_requis.get(role);
+	}
+	
+	@Override
+	public Role_Requis_RPC1 getCorrespondance(Database_PortFourni port) {
+		return correspondance_fourni.get(port);
 	}
 	/**
 	 * <!-- begin-user-doc -->

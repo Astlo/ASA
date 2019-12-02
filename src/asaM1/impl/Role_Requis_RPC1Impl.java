@@ -37,8 +37,13 @@ public class Role_Requis_RPC1Impl extends RoleRequisImpl implements Role_Requis_
 		return AsaM1Package.Literals.ROLE_REQUIS_RPC1;
 	}
 	@Override
-	public void addObserver(RPC1 rpc1Impl) {
+	public void addObserver(RPC1 observer) {
 		this.observer = observer;		
+	}
+
+	@Override
+	public void notifyRPC(String message) {
+		observer.transfertMessageDB(this, message);			
 	}
 
 } //Role_Requis_RPC1Impl

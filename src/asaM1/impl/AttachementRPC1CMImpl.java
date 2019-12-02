@@ -6,6 +6,7 @@ import aSA.impl.AttachementImpl;
 
 import asaM1.AsaM1Package;
 import asaM1.AttachementRPC1CM;
+import asaM1.Client_Port_Requis;
 import asaM1.Connection_PortFourni;
 import asaM1.Connection_PortRequis;
 import asaM1.RPC_Role_Fourni;
@@ -81,17 +82,17 @@ public class AttachementRPC1CMImpl extends AttachementImpl implements Attachemen
 	 */
 	protected Role_fourni_RPC1 role_fourni_rpc1;
 
-	private Role_Requis_RPC1Impl rpc_role_requiscm;
+	private Role_Requis_RPC1 rpc_role_requiscm;
 
-	private Role_fourni_RPC1Impl rpc_role_fournicm;
+	private Role_fourni_RPC1 rpc_role_fournicm;
 
 	private Connection_PortRequis connection_PortRequis;
 
 	private Connection_PortFourni connection_PortFourni;
 
-	private HashMap<Connection_PortFourni, Role_Requis_RPC1Impl> correspondance_fourni;
+	private HashMap<Connection_PortFourni, Role_Requis_RPC1> correspondance_fourni;
 
-	private HashMap<Role_fourni_RPC1Impl, Connection_PortRequis> correspondance_requis;
+	private HashMap<Role_fourni_RPC1, Connection_PortRequis> correspondance_requis;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,21 +103,26 @@ public class AttachementRPC1CMImpl extends AttachementImpl implements Attachemen
 		super();
 	}
 
-	public AttachementRPC1CMImpl(Connection_PortFourni connection_PortFourni, Role_Requis_RPC1Impl rpc_role_requiscm,
-			Connection_PortRequis connection_PortRequis, Role_fourni_RPC1Impl rpc_role_fournicm) {
+	protected AttachementRPC1CMImpl(Connection_PortFourni connection_PortFourni, Role_Requis_RPC1 rpc_role_requiscm,
+			Connection_PortRequis connection_PortRequis, Role_fourni_RPC1 rpc_role_fournicm) {
 		super();
 		this.connection_PortFourni = connection_PortFourni;
 		this.connection_PortRequis = connection_PortRequis;
 		this.rpc_role_fournicm = rpc_role_fournicm;
 		this.rpc_role_requiscm = rpc_role_requiscm;
-		
-		correspondance_fourni = new HashMap<Connection_PortFourni, Role_Requis_RPC1Impl>();
-		correspondance_requis = new HashMap<Role_fourni_RPC1Impl,Connection_PortRequis >();
+		correspondance_fourni = new HashMap<Connection_PortFourni, Role_Requis_RPC1>();
+		correspondance_requis = new HashMap<Role_fourni_RPC1,Connection_PortRequis >();
 		
 		correspondance_fourni.put(connection_PortFourni, rpc_role_requiscm);
 		correspondance_requis.put(rpc_role_fournicm, connection_PortRequis);
 	}
 
+
+	@Override
+	public Connection_PortRequis getCorrespondance(Role_fourni_RPC1 role) {	
+		return correspondance_requis.get(role);
+	}
+	
 	@Override
 	public Role_Requis_RPC1 getCorrespondance(Connection_PortFourni port) {
 		return correspondance_fourni.get(port);

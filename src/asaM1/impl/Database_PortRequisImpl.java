@@ -5,6 +5,7 @@ package asaM1.impl;
 import aSA.impl.PortRequisImpl;
 
 import asaM1.AsaM1Package;
+import asaM1.Database;
 import asaM1.Database_PortRequis;
 
 import org.eclipse.emf.ecore.EClass;
@@ -17,6 +18,8 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public class Database_PortRequisImpl extends PortRequisImpl implements Database_PortRequis {
+	Database observer;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36,4 +39,14 @@ public class Database_PortRequisImpl extends PortRequisImpl implements Database_
 		return AsaM1Package.Literals.DATABASE_PORT_REQUIS;
 	}
 
+	@Override
+	public void addObserver(Database observer) {
+		this.observer = observer;
+		
+	}
+
+	@Override
+	public void notifyDB(String message) {
+		this.observer.receiveNotify(message);
+	}
 } //Database_PortRequisImpl

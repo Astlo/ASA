@@ -17,6 +17,7 @@ import asaM1.BindingServeur;
 import asaM1.Connection;
 import asaM1.Connection_PortFourni;
 import asaM1.Database;
+import asaM1.Database_PortFourni;
 import asaM1.RPC1;
 import asaM1.RPC2;
 import asaM1.RPC3;
@@ -204,14 +205,15 @@ public class Server_DetailImpl extends ConfigurationImpl implements Server_Detai
 	protected Server_DetailImpl() {
 		super();
 	}
-
+	
 	protected Server_DetailImpl(Server observer) {
 		super();
+		this.observer = observer;
 		connection = new ConnectionImpl(this);
 		database = new DatabaseImpl(this);
 		security = new SecurityImpl();
 		
-		rpc1 = new RPC1Impl();
+		rpc1 = new RPC1Impl(this);
 		rpc2 = new RPC2Impl();
 		rpc3 = new RPC3Impl();
 		
@@ -228,21 +230,38 @@ public class Server_DetailImpl extends ConfigurationImpl implements Server_Detai
 		rolesCorrespondanceCM.put(rpc1.getRpc_role_fournicm(), attachementrpc1cm);
 		rolesCorrespondanceDB.put(rpc1.getRpc_role_fournidb(), attachementrpc1db);
 		
-		bindingserveur = new BindingServeurImpl();
+		bindingserveur = new BindingServeurImpl(connection.getConnection_port_fourni().get(1), connection.getConnection_port_requis().get(1), observer.getServeur_port_fourni().get(1), observer.getServeur_port_requis().get(1));
 	}
 	
 	@Override
 	public void transfert(Connection_PortFourni port, String message) {
-		if(rolesCorrespondanceCM.containsKey(port))
+		if(port == connection.getConnection_port_fourni().get(1))
 		{
-			attachementrpc1cm.getCorrespondance(port).notifyClient(message);
+			System.out.println("test"+observer.getServeur_port_fourni());
+			observer.getServeur_port_fourni().get(0).notifyConfig(message);
 		}
-		else if (rolesCorrespondanceDB.containsKey(port))
+		else
 		{
-			attachementrpc1db.getCorrespondance(port).notifyDB(message);
+			attachementrpc1cm.getCorrespondance(port).notifyRPC(message);
 		}
 	}
-
+	
+	public void transfert(Database_PortFourni port, String message)
+	{
+		attachementrpc1db.getCorrespondance(port).notifyRPC(message);
+	}
+	@Override
+	public void transfert(Role_fourni_RPC1 role, String message)
+	{
+		if(rolesCorrespondanceCM.containsKey(role))
+		{
+			attachementrpc1cm.getCorrespondance(role).notifyConnectionManager(message);
+		}
+		else if (rolesCorrespondanceDB.containsKey(role))
+		{
+			attachementrpc1db.getCorrespondance(role).notifyDB(message);
+		}
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

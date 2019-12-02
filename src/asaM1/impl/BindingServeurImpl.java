@@ -84,6 +84,15 @@ public class BindingServeurImpl extends BindingImpl implements BindingServeur {
 		super();
 	}
 
+	public BindingServeurImpl(Connection_PortFourni connection_PortFourni, Connection_PortRequis connection_PortRequis,
+			Serveur_Port_Fourni serveur_Port_Fourni, Serveur_Port_Requis serveur_Port_Requis) {
+		this.external_socket_fourni = connection_PortFourni;
+		this.external_socket_requis = connection_PortRequis;
+		this.serveur_port_requis = serveur_Port_Requis;
+		this.serveur_port_fourni = serveur_Port_Fourni;
+		
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

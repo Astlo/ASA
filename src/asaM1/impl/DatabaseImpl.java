@@ -5,12 +5,17 @@ package asaM1.impl;
 import aSA.impl.ComposantImpl;
 
 import asaM1.AsaM1Package;
+import asaM1.Connection_PortFourni;
+import asaM1.Connection_PortRequis;
 import asaM1.Database;
 import asaM1.Database_PortFourni;
 import asaM1.Database_PortRequis;
+import asaM1.Server_Detail;
 
 import java.util.Collection;
+import java.util.HashMap;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -52,6 +57,12 @@ public class DatabaseImpl extends ComposantImpl implements Database {
 	 */
 	protected EList<Database_PortRequis> database_port_requis;
 
+	private HashMap<String, String> data;
+
+	private Database_PortRequis portrequisdatabase;
+
+	private Database_PortFourni portfournidatabase;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,8 +72,27 @@ public class DatabaseImpl extends ComposantImpl implements Database {
 		super();
 	}
 
-	protected DatabaseImpl(Server_DetailImpl server_DetailImpl) {
+
+	protected DatabaseImpl(Server_Detail observer) {
 		super();
+		portrequisdatabase = new Database_PortRequisImpl();
+		portfournidatabase = new Database_PortFourniImpl();
+
+		database_port_requis = new BasicEList<Database_PortRequis>();
+		database_port_fourni = new BasicEList<Database_PortFourni>();
+		database_port_requis.add(portrequisdatabase);
+		database_port_fourni.add(portfournidatabase);
+		portrequisdatabase.addObserver(this);
+		portfournidatabase.addObserver(observer);
+		
+		data = new HashMap<String, String>();
+		data.put("donnees", "secretes");
+	}
+	
+	@Override
+	public void receiveNotify(String message)
+	{
+		portfournidatabase.notifyServeur(data.get(message));
 	}
 
 	/**

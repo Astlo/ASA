@@ -10,6 +10,7 @@ import asaM1.RPC_Role_Fourni;
 import asaM1.RPC_Role_Requis;
 import asaM1.Role_Requis_RPC1;
 import asaM1.Role_fourni_RPC1;
+import asaM1.Server_Detail;
 
 import java.util.HashMap;
 
@@ -74,21 +75,29 @@ public class RPC1Impl extends ConnecteurImpl implements RPC1 {
 		super();
 	}
 
-	protected RPC1Impl(Server_DetailImpl observer) {
+	protected RPC1Impl(Server_Detail observer) {
 		super();
 		rpc_role_requiscm = new Role_Requis_RPC1Impl();
 		rpc_role_requisdb = new Role_Requis_RPC1Impl();
 		rpc_role_fournicm = new Role_fourni_RPC1Impl();
 		rpc_role_fournidb = new Role_fourni_RPC1Impl();
-		
+				
 		rpc_role_requiscm.addObserver(this);
 		rpc_role_requisdb.addObserver(this);
 		rpc_role_fournicm.addObserver(observer);
 		rpc_role_fournidb.addObserver(observer);
-		
+		glueRPC = new HashMap<Role_Requis_RPC1Impl, Role_fourni_RPC1Impl>();
 		glueRPC.put(rpc_role_requiscm, rpc_role_fournidb);
 		glueRPC.put(rpc_role_requisdb, rpc_role_fournicm);
 	}
+	
+
+	@Override
+	public void transfertMessageDB(Role_Requis_RPC1 role, String message) {
+		Role_fourni_RPC1Impl newrole = glueRPC.get(role);
+		newrole.notifyServeur(newrole, message);
+	}
+	
 	@Override
 	public Role_Requis_RPC1Impl getRpc_role_requiscm() {
 		return rpc_role_requiscm;
@@ -281,5 +290,6 @@ public class RPC1Impl extends ConnecteurImpl implements RPC1 {
 		}
 		return super.eIsSet(featureID);
 	}
+
 
 } //RPC1Impl

@@ -43,5 +43,10 @@ public class Serveur_Port_FourniImpl extends PortFourniImpl implements Serveur_P
 		return AsaM1Package.Literals.SERVEUR_PORT_FOURNI;
 	}
 
+	@Override
+	public void notifyConfig(String message) {
+		this.observer.transfert(this, message);
+	}
+
 
 } //Serveur_Port_FourniImpl

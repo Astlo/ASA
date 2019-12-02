@@ -12,6 +12,7 @@ import asaM1.Client_Port_Fourni;
 import asaM1.RPC;
 import asaM1.RPC_Role_Fourni;
 import asaM1.Server;
+import asaM1.Serveur_Port_Fourni;
 
 import java.util.HashMap;
 
@@ -114,7 +115,7 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 	}
 	
 	public void start() {
-		client.envoieRequeteClient(client.getClient_port_fourni(), "voiture");
+		client.envoieRequeteClient(client.getClient_port_fourni(), "donnees");
 	}
 
 	public void transfert(Client_Port_Fourni port, String message) {
@@ -132,6 +133,10 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 		}
 	}
 
+	public void transfert(Serveur_Port_Fourni port, String message) {
+		System.out.println(attacheserveurrpc + " " + port);
+		attacheserveurrpc.getCorrespondance(port).notifyRPC(message);
+	}
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -439,6 +444,7 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 		rpc = value;
 		
 	}
+
 
 
 

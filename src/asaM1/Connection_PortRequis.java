@@ -20,4 +20,5 @@ public interface Connection_PortRequis extends PortRequis {
 	void notifyConnectionManager(String message);
 
 	void addObserver(Connection connectionImpl);
+
 } // Connection_PortRequis

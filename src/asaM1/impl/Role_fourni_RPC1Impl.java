@@ -43,4 +43,10 @@ public class Role_fourni_RPC1Impl extends RoleFourniImpl implements Role_fourni_
 		this.observer = observer;
 	}
 
+	@Override
+	public void notifyServeur(Role_fourni_RPC1 newrole, String message) {
+		this.observer.transfert(this, message);
+		
+	}
+	
 } //Role_fourni_RPC1Impl

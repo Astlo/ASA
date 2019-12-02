@@ -15,6 +15,7 @@ import asaM1.Serveur_Port_Requis;
 import java.util.Collection;
 import java.util.HashMap;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -66,6 +67,8 @@ public class ConnectionImpl extends ComposantImpl implements Connection {
 	}
 	
 	private Server_Detail observer;
+
+	private HashMap<Connection_PortRequis, Connection_PortFourni> portCorrespondance;
 	
 	protected ConnectionImpl(Server_Detail observer) {
 		super();
@@ -80,14 +83,18 @@ public class ConnectionImpl extends ComposantImpl implements Connection {
 		requis_es.addObserver(this);
 		fourni_db.addObserver(observer);
 		requis_db.addObserver(this);
-				
-		connection_port_requis.add(requis_es);
+		connection_port_requis = new BasicEList<Connection_PortRequis>();
+		connection_port_fourni = new BasicEList<Connection_PortFourni>();
 		connection_port_requis.add(requis_db);
-		connection_port_fourni.add(fourni_es);
+		connection_port_requis.add(requis_es);
 		connection_port_fourni.add(fourni_db);
+		connection_port_fourni.add(fourni_es);
+
+		portCorrespondance = new HashMap<Connection_PortRequis, Connection_PortFourni>();
+		portCorrespondance.put(requis_es, fourni_db);
+		portCorrespondance.put(requis_db, fourni_es);
 	}
 
-	private HashMap<Connection_PortRequis, Connection_PortFourni> portCorrespondance;
 	@Override
 	public void transfert(Connection_PortRequis connexion_Port_RequisImpl, String message) {
 		portCorrespondance.get(connexion_Port_RequisImpl).notifyServeur(message);

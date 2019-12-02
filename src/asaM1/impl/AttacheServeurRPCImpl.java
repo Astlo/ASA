@@ -102,21 +102,20 @@ public class AttacheServeurRPCImpl extends AttachementImpl implements AttacheSer
 		
 		correspondance_fourni = new HashMap<Serveur_Port_Fourni, RPC_Role_Requis>();
 		correspondance_requis = new HashMap<RPC_Role_Fourni,Serveur_Port_Requis >();
-		
+		System.out.println(serveur_port_fourni);
 		correspondance_fourni.put(serveur_port_fourni, role_requis);
 		correspondance_requis.put(role_fourni, serveur_port_requis);
 	}
 
 	@Override
 	public Serveur_Port_Requis getCorrespondance(RPC_Role_Fourni role) {
-		// TODO Auto-generated method stub
-		return null;
+		return correspondance_requis.get(role);
 	}
 
 	@Override
 	public RPC_Role_Requis getCorrespondance(Serveur_Port_Fourni port) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("attach" + correspondance_fourni.get(port));
+		return correspondance_fourni.get(port);
 	}
 	
 	/**

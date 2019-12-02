@@ -3,6 +3,7 @@
 package asaM1;
 
 import aSA.Composant;
+import asaM1.impl.Database_PortRequisImpl;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -47,5 +48,7 @@ public interface Database extends Composant {
 	 * @generated
 	 */
 	EList<Database_PortRequis> getDatabase_port_requis();
+
+	void receiveNotify(String message);
 
 } // Database
