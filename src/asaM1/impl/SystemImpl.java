@@ -134,7 +134,6 @@ public class SystemImpl extends ConfigurationImpl implements asaM1.System {
 	}
 
 	public void transfert(Serveur_Port_Fourni port, String message) {
-		System.out.println(attacheserveurrpc + " " + port);
 		attacheserveurrpc.getCorrespondance(port).notifyRPC(message);
 	}
 	/**

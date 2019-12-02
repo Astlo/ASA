@@ -237,7 +237,6 @@ public class Server_DetailImpl extends ConfigurationImpl implements Server_Detai
 	public void transfert(Connection_PortFourni port, String message) {
 		if(port == connection.getConnection_port_fourni().get(1))
 		{
-			System.out.println("test"+observer.getServeur_port_fourni());
 			observer.getServeur_port_fourni().get(0).notifyConfig(message);
 		}
 		else
